@@ -22,6 +22,14 @@ public class Agencia {
     public void setBanco(Banco banco) {
         this.banco = banco;
     }
+
+    public ArrayList<Conta> getConta() {
+        return contas;
+    }
+
+    public void setConta(Conta conta) {
+        contas.add(conta);
+    }
     
     public String getNomeAgencia() {
         return nomeAgencia;

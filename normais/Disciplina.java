@@ -45,14 +45,14 @@ public class Disciplina {
     }
 
     public void addAluno(Aluno aluno) throws Exception {
-        if( alunos.size()< 10){
-            throw  new MinimoAlunos(alunos.size());
+        if( alunos.size() > 60){
+            throw  new MaximoAlunos(alunos.size());
         }else
             alunos.add(aluno);
     }
     public void removeAluno(Aluno aluno) throws Exception{
-        if( alunos.size()> 60){
-            throw new MaximoAlunos(alunos.size());
+        if( alunos.size() < 10){
+            throw new MinimoAlunos(alunos.size());
         }else
             alunos.remove(aluno);
     }

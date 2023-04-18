@@ -56,5 +56,8 @@ public class Gerente extends Funcionario{
         super.setNome(nome);
     }
 
-
+    @Override
+    public String toString() {
+        return this.nome;
+    }
 }

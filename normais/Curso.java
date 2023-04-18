@@ -8,10 +8,9 @@ public class Curso {
     private Coordenador coordenador;
     private final ArrayList<Disciplina> disciplinas= new ArrayList();
 
-    public Curso(String nome, String codCurso, Coordenador coordenador) {
+    public Curso(String nome, String codCurso) {
         this.nome = nome;
         this.codCurso = codCurso;
-        this.coordenador = coordenador;
     }
 
     public Coordenador getCoordenador() {

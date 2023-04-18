@@ -47,12 +47,32 @@ public class Principal {
 
 
 
-
-
     public static void main(String[] args) throws Exception {
         String[] tiposPessoas = {"Aluno","Professor","Presidente","Diretor","Coordenador",
                             "SecAcademico","secFinanceiro","Gerente"};
         int opI,opF,opP,opB,opA,x;
+
+        Aluno aluno = new Aluno("AlunoDefault", "Default", "Default");
+        Professor professor = new Professor("ProfessorDefault", "Default", "Default");
+        Presidente presidente = new Presidente("PresidenteDefault", "Default", 123);
+        Diretor diretor = new Diretor("DiretorDefault", "DiretorDefault", 123);
+        Coordenador coordenador = new Coordenador("CoordenadorDefault", "Default", 123);
+        Gerente gerente = new Gerente("GerenteDefault", "Default");
+        SecAcademica secAcademica = new SecAcademica("SecAcadDefault", "Default", 123);
+        SecFinanceira secFinanceira = new SecFinanceira("SeDefault", "Default", 123);
+
+            Principal.alunos.add(0,aluno);
+            Principal.professores.add(0,professor);
+            Principal.presidentes.add(0,presidente);
+            Principal.diretores.add(0,diretor);
+            Principal.coordenadores.add(0,coordenador);
+            Principal.gerentes.add(0,gerente);
+            Principal.secretariosAcademicos.add(0,secAcademica);
+            Principal.secretariosFinanceiros.add(0,secFinanceira);
+
+        //     System.out.println(Principal.alunos.get(0).getNome());
+        //     System.out.println(Principal.coordenadores.get(0).getNome());
+       
 
         pessoasFisicas.addAll(alunos);
         pessoasFisicas.addAll(professores);
@@ -64,9 +84,19 @@ public class Principal {
         pessoasFisicas.addAll(secretariosFinanceiros);
 
         do{
+            Principal.alunos.add(0,aluno);
+            Principal.professores.add(0,professor);
+            Principal.presidentes.add(0,presidente);
+            Principal.diretores.add(0,diretor);
+            Principal.coordenadores.add(0,coordenador);
+            Principal.gerentes.add(0,gerente);
+            Principal.secretariosAcademicos.add(0,secAcademica);
+            Principal.secretariosFinanceiros.add(0,secFinanceira);
+            
             MenuCriacao();
             System.out.println("Escolha uma opcao:(0 para sair)");
             opI= scan.nextInt();
+            
             
             switch(opI){
                 case 1:
@@ -85,7 +115,7 @@ public class Principal {
                         switch(x){
                             case 0:
                             {
-                                Metodos.CriarPessoa();
+                                Metodos.CriarAluno();
                                 System.out.println("Criado com sucesso");
                                 break;
                             }   
@@ -257,7 +287,7 @@ public class Principal {
                            |2.Criar faculdade           |
                            |3.Criar bancos              |
                            |4.Associar                  |
-                           !5.Manipular                 |
+                           |5.Manipular                 |
                            ==============================
                            """);
         }

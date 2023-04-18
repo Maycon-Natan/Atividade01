@@ -12,10 +12,10 @@ public class ContaPoupanca implements Conta {
     private float rendimento;
 
 
-    public ContaPoupanca(String codConta, Pessoa titular, Gerente gerente, double saldo) {
+    public ContaPoupanca(String codConta,  double saldo) {
         this.codConta = codConta;
-        this.titular = titular;
-        this.gerente = gerente;
+
+      
         this.saldo = saldo;
         
     }
@@ -65,7 +65,7 @@ public class ContaPoupanca implements Conta {
         }
         else
             this.saldo -= valor;
-            System.out.println("Saque realizado com sucesso!");
+            System.out.println("Saque realizado com sucesso!\n" + "Valor em saldo" + this.saldo);
     }
 
     @Override

@@ -10,10 +10,8 @@ public class ContaCorrente implements Conta {
     private double saldo;
     private Agencia agencia;
 
-    public ContaCorrente(String codConta, Pessoa titular, Gerente gerente, double saldo) {
+    public ContaCorrente(String codConta,  double saldo) {
         this.codConta = codConta;
-        this.titular = titular;
-        this.gerente = gerente;
         this.saldo = saldo;
     }
 
@@ -30,6 +28,7 @@ public class ContaCorrente implements Conta {
     @Override
     public void depositar(double valor) {
         this.saldo+= valor;
+        System.out.println("Deposito realizado com sucesso!\n" + "Valor em saldo" + this.saldo);
     }
 
     @Override
@@ -39,7 +38,7 @@ public class ContaCorrente implements Conta {
         }
         else
             this.saldo -= valor;
-            System.out.println("Saque realizado com sucesso!");
+            System.out.println("Saque realizado com sucesso!\n" + "Valor em saldo" + this.saldo);
     }
 
     @Override

@@ -64,7 +64,7 @@ public class Metodos {
         sac.setCodSecretaria(cod);
         
         Principal.secretariosAcademicos.add(sac);
-        System.out.println("Deseja adicionar alunos a fila de atendimento: 1- Sim  2- Não");
+        System.out.println("Deseja adicionar alunos a fila de atendimento: 1- Sim  2- Nao");
         op = scan.nextInt();
         if(op==1){
             System.out.println("Quantos:");
@@ -72,7 +72,7 @@ public class Metodos {
             for(int i=0;i<op1;i++){
             System.out.println("Escolha o aluno:");
                 for(int j=0;j<Principal.alunos.size();j++){
-                    System.out.print(j+"."+Principal.alunos.get(j)+"|");
+                    System.out.println(j+"."+Principal.alunos.get(j)+"|");
                 }
                 op2= scan.nextInt();
                 sac.agendarAluno(Principal.alunos.get(op2));
@@ -112,7 +112,7 @@ public class Metodos {
             for(int i=0;i<op1;i++){
                 System.out.println("Escolha a pessoa:");
                 for(int j=0; j<Principal.pessoasFisicas.size();j++){
-                    System.out.print(j+".("+Principal.pessoasFisicas.get(j)+")|");
+                    System.out.println(j+".("+Principal.pessoasFisicas.get(j)+")|");
                 }
                 op2=scan.nextInt();
                 secFinanceira.addFila(Principal.pessoasFisicas.get(op2));
@@ -150,7 +150,7 @@ public class Metodos {
         Principal.presidentes.add(pr);
     }
 
-    public static void CriarPessoa() {
+    public static void CriarAluno() {
         Aluno aluno = new Aluno("Default", "Default", "Default");
         String nome;
         String rg;
@@ -186,7 +186,7 @@ public class Metodos {
             for(int i=0;i<op1;i++){
                 System.out.println("Escolha a pessoa:");
                 for(int j=0; j<Principal.pessoas.size();j++){
-                    System.out.print(j+".("+Principal.pessoas.get(i).getNome()+")|");
+                    System.out.println(j+".("+Principal.pessoas.get(i).getNome()+")|");
                 }
                 op2=scan.nextInt();
                 gerente.addFila(Principal.pessoas.get(op2));
@@ -205,25 +205,26 @@ public class Metodos {
         System.out.println("Digite os dados da Conta na ordem:SALDO,CODIGO CONTA");
         saldo = Principal.scan.nextDouble();
         cod = Principal.scan.next();
-        System.out.println("Adicione um gerente:");
-        if(Principal.gerentes.isEmpty()) {
-            System.out.println("Nenhum gerente criado");
-        } else {
-            for (int op3 = 0; op3 < Principal.gerentes.size(); op3++) {
+        // System.out.println("Adicione um gerente:");
+        // if(Principal.gerentes.isEmpty()) {
+        //     System.out.println("Nenhum gerente criado");
+        // } else {
+        //     for (int op3 = 0; op3 < Principal.gerentes.size(); op3++) {
            
-                System.out.println(op3 + ".("+Principal.gerentes.get(op3).getNome()+")|");
-            } 
-            escolha = Principal.scan.nextInt();
+        //         System.out.println(op3 + ".("+Principal.gerentes.get(op3).getNome()+")|");
+        //     } 
+        //     escolha = Principal.scan.nextInt();
             System.out.println("O titular foi definido como padrao, associe um titular apos a criacao!");
             if (op1 == 1) {
-                ContaCorrente conta = new ContaCorrente(cod, Principal.professores.get(0), Principal.gerentes.get(escolha), saldo);
+                ContaCorrente conta = new ContaCorrente(cod,  saldo);
                 Principal.contas.add(conta);
             } else if (op1 == 2) {
-                ContaPoupanca conta = new ContaPoupanca(cod, Principal.professores.get(0), Principal.gerentes.get(escolha), saldo);
+                ContaPoupanca conta = new ContaPoupanca(cod, saldo);
                 Principal.contas.add(conta);
+                System.out.println( Principal.contas.get(0));
             }
 
-        }
+        // }
         
         
         
@@ -259,7 +260,7 @@ public class Metodos {
             for(int i=0;i<op1;i++){
                 System.out.println("Escolha pelo RG:");
                 for(int j=0; j<Principal.pessoasFisicas.size();j++){
-                    System.out.print(j+".("+Principal.pessoasFisicas.get(i).getRg()+")|");
+                    System.out.println(j+".("+Principal.pessoasFisicas.get(i).getRg()+")|");
                 }
                 op2=scan.nextInt();
                 secFinanceira.addFila(Principal.pessoasFisicas.get(op2));
@@ -284,7 +285,7 @@ public class Metodos {
     }
 
     public static void CriarCurso() {
-        Curso curso = new Curso("Default", "Default", Principal.coordenadores.get(0));
+        Curso curso = new Curso("Default", "Default");
         String nome;
         String cod;
         System.out.println("Digite os dados do Curso na ordem: NOME, CODIGO CURSO");
@@ -311,7 +312,7 @@ public class Metodos {
         matricula = Principal.scan.next();
         professor.setMatricula(matricula);
         Principal.professores.add(professor);
-        System.out.println("Deseja colocar algum aluno na fila de atendimento? 1- Sim   2- Não");
+        System.out.println("Deseja colocar algum aluno na fila de atendimento? 1- Sim   2- Nao");
         op = scan.nextInt();
         if(op==1){
             System.out.println("Quantos:");
@@ -319,7 +320,7 @@ public class Metodos {
             for(int i=0;i<op1;i++){
                 System.out.println("Escolha o aluno:");
                 for(int j=0;j<Principal.alunos.size();j++){
-                    System.out.print(j+"."+Principal.alunos.get(j)+"|");
+                    System.out.println(j+"."+Principal.alunos.get(j)+"|");
                 }
                 op2= scan.nextInt();
                 professor.agendarAluno(Principal.alunos.get(op2));
@@ -358,7 +359,7 @@ public class Metodos {
             {
                 System.out.println("Escolha o curso:");
                 for (int i = 0; i < Principal.cursos.size(); i++) {
-                    System.out.print(i + "." + Principal.cursos.get(i).getNome() + "|");
+                    System.out.println(i + "." + Principal.cursos.get(i).getNome() + "|");
                 }
                 escolhaC = Principal.scan.nextInt();
                 Principal.faculdades[0].setCursos(Principal.cursos.get(escolhaC));
@@ -368,7 +369,7 @@ public class Metodos {
             {
                 System.out.println("Escolha o diretor:");
                 for (int i = 0; i < Principal.diretores.size(); i++) {
-                    System.out.print(i + "." + Principal.diretores.get(i).getNome() + "|");
+                    System.out.println(i + "." + Principal.diretores.get(i).getNome() + "|");
                 }
                 escolhaD = Principal.scan.nextInt();
                 Principal.faculdades[0].setDiretor(Principal.diretores.get(escolhaD));
@@ -378,7 +379,7 @@ public class Metodos {
             {
                 System.out.println("Escolha o coordenador:");
                 for (int i = 0; i < Principal.coordenadores.size(); i++) {
-                    System.out.print(i + "." + Principal.coordenadores.get(i).getNome() + "|");
+                    System.out.println(i + "." + Principal.coordenadores.get(i).getNome() + "|");
                 }
                 escolhaCO = Principal.scan.nextInt();
                 Principal.faculdades[0].setCoordenadores(Principal.coordenadores.get(escolhaCO));
@@ -391,14 +392,14 @@ public class Metodos {
                 if (x == 1) {
                     System.out.println("Escolha o secAcademico:");
                     for (int i = 0; i < Principal.secretariosAcademicos.size(); i++) {
-                        System.out.print(i + "." + Principal.secretariosAcademicos.get(i).getNome() + "|");
+                        System.out.println(i + "." + Principal.secretariosAcademicos.get(i).getNome() + "|");
                     }
                     escolhaSA = Principal.scan.nextInt();
                     Principal.faculdades[0].setSecretariosAcademicos(Principal.secretariosAcademicos.get(escolhaSA));
                 } else {
                     System.out.println("escolha o secFinanceiro:");
                     for (int i = 0; i < Principal.secretariosFinanceiros.size(); i++) {
-                        System.out.print(i + "." + Principal.secretariosFinanceiros.get(i).getNome() + "|");
+                        System.out.println(i + "." + Principal.secretariosFinanceiros.get(i).getNome() + "|");
                     }
                     escolhaSF = Principal.scan.nextInt();
                     Principal.faculdades[0].setSecretariosFinanceiros(Principal.secretariosFinanceiros.get(escolhaSF));
@@ -415,7 +416,7 @@ public class Metodos {
         
         System.out.println("em qual o curso:");
         for(int i=0;i<Principal.cursos.size();i++){
-            System.out.print(i+"."+Principal.cursos.get(i).getNome());
+            System.out.println(i+"."+Principal.cursos.get(i).getNome());
         }
         cursoEscolhido= scan.nextInt();
         
@@ -427,7 +428,7 @@ public class Metodos {
             {
                 System.out.println("Escolha as disciplinas:");
                 for(int i=0;i<Principal.disciplinas.size();i++){
-                    System.out.print(i+"."+Principal.disciplinas.get(i).getNome()+"|");
+                    System.out.println(i+"."+Principal.disciplinas.get(i).getNome()+"|");
                 }
                 escolha2=scan.nextInt();
                 Principal.cursos.get(cursoEscolhido).addDisciplina(Principal.disciplinas.get(escolha2));
@@ -437,7 +438,7 @@ public class Metodos {
             {
                 System.out.println("Escolha o coordenador:");
                 for(int i=0;i<Principal.coordenadores.size();i++){
-                    System.out.print(i+"."+Principal.coordenadores.get(i).getNome()+"|");
+                    System.out.println(i+"."+Principal.coordenadores.get(i).getNome()+"|");
                 }
                 escolha3= scan.nextInt();
                 Principal.cursos.get(cursoEscolhido).setCoordenador(Principal.coordenadores.get(escolha3));
@@ -452,7 +453,7 @@ public class Metodos {
         
         System.out.println("em qual o Disciplina:");
         for(int i=0;i<Principal.disciplinas.size();i++){
-            System.out.print(i+"."+Principal.disciplinas.get(i).getNome()+"|");
+            System.out.println(i+"."+Principal.disciplinas.get(i).getNome()+"|");
         }
         disEscolhida= scan.nextInt();
         System.out.println("O que deseja associar:1.Professor|2.Aluno");
@@ -463,7 +464,7 @@ public class Metodos {
             {
                 System.out.println("Escolha o professor:");
                 for(int i=0;i<Principal.professores.size();i++){
-                    System.out.print(i+"."+Principal.professores.get(i)+"|");
+                    System.out.println(i+"."+Principal.professores.get(i)+"|");
                 }
                 escolha2= scan.nextInt();
                 Principal.disciplinas.get(disEscolhida).setProfessor(Principal.professores.get(escolha2));
@@ -473,7 +474,7 @@ public class Metodos {
             {
                 System.out.println("Escolha o Aluno:");
                 for(int i=0;i<Principal.alunos.size();i++){
-                    System.out.print(i+"."+Principal.alunos.get(i)+"|");
+                    System.out.println(i+"."+Principal.alunos.get(i)+"|");
                 }
                 escolha3= scan.nextInt();
                 Principal.disciplinas.get(disEscolhida).addAluno(Principal.alunos.get(escolha3));
@@ -488,7 +489,7 @@ public class Metodos {
         
         System.out.println("Em qual agencia:");
         for(int i=0;i<Principal.agencias.size();i++){
-            System.out.print(i+"."+Principal.agencias.get(i)+"|");
+            System.out.println(i+"."+Principal.agencias.get(i)+"|");
         }
         ageEscolhida= scan.nextInt();
         
@@ -505,7 +506,7 @@ public class Metodos {
             {
                 System.out.println("Escolha a conta:");
                 for(int i=0;i<Principal.contas.size();i++){
-                    System.out.print(i+"."+Principal.contas.get(i)+"|");
+                    System.out.println(i+"."+Principal.contas.get(i)+"|");
                 }
                 escolha2= scan.nextInt();
                 Principal.agencias.get(ageEscolhida).addContas(Principal.contas.get(escolha2));
@@ -521,11 +522,11 @@ public class Metodos {
         
         System.out.println("Em qual conta:");
         for(int i=0;i<Principal.contas.size();i++){
-            System.out.print(i+"."+Principal.contas.get(i)+"|");
+            System.out.println(i+"."+Principal.contas.get(i)+"|");
         }
         contaEscolhida= scan.nextInt();
         
-        System.out.println("O que desja associar:1.Titular|2.Agencia|3.Gerente");
+        System.out.println("O que deseja associar:1.Titular|2.Agencia|3.Gerente");
         escolha1= scan.nextInt();
         
         switch(escolha1){
@@ -540,66 +541,74 @@ public class Metodos {
                     case 1:
                         System.out.println("Escolha o aluno:");
                         for(int i=0;i<Principal.alunos.size();i++){
-                            System.out.print(i+"."+Principal.alunos.get(i)+"|");
+                            System.out.println(i+"."+Principal.alunos.get(i)+"|");
                         }
                         alun= scan.nextInt();
                         Principal.contas.get(contaEscolhida).setTitular(Principal.alunos.get(alun));
+                        Principal.alunos.get(alun).setConta(Principal.contas.get(contaEscolhida));
                         break;
                     case 2:
                         System.out.println("Escolha o professor:");
                         for(int i=0;i<Principal.professores.size();i++){
-                            System.out.print(i+"."+Principal.professores.get(i)+"|");
+                            System.out.println(i+"."+Principal.professores.get(i)+"|");
                         }
                         prof= scan.nextInt();
                         Principal.contas.get(contaEscolhida).setTitular(Principal.professores.get(prof));
+                        Principal.alunos.get(prof).setConta(Principal.contas.get(contaEscolhida));
                         break;
                     case 3:
                         System.out.println("Escolha o presidente:");
                         for(int i=0;i<Principal.presidentes.size();i++){
-                            System.out.print(i+"."+Principal.presidentes.get(i)+"|");
+                            System.out.println(i+"."+Principal.presidentes.get(i)+"|");
                         }
                         pres= scan.nextInt();
                         Principal.contas.get(contaEscolhida).setTitular(Principal.presidentes.get(pres));
+                        Principal.alunos.get(pres).setConta(Principal.contas.get(contaEscolhida));
                         break;
                     case 4:
                         System.out.println("Escolha o diretor:");
                         for(int i=0;i<Principal.diretores.size();i++){
-                            System.out.print(i+"."+Principal.diretores.get(i)+"|");
+                            System.out.println(i+"."+Principal.diretores.get(i)+"|");
                         }
                         dir= scan.nextInt();
                         Principal.contas.get(contaEscolhida).setTitular(Principal.diretores.get(dir));
+                        Principal.alunos.get(dir).setConta(Principal.contas.get(contaEscolhida));
                         break;
                     case 5:
                         System.out.println("Escolha o gerente:");
                         for(int i=0;i<Principal.gerentes.size();i++){
-                            System.out.print(i+"."+Principal.gerentes.get(i)+"|");
+                            System.out.println(i+"."+Principal.gerentes.get(i)+"|");
                         }
                         ger= scan.nextInt();
                         Principal.contas.get(contaEscolhida).setTitular(Principal.gerentes.get(ger));
+                        Principal.alunos.get(ger).setConta(Principal.contas.get(contaEscolhida));
                         break;
                     case 6:
                         System.out.println("Escolha o coordenador:");
                         for(int i=0;i<Principal.coordenadores.size();i++){
-                            System.out.print(i+"."+Principal.coordenadores.get(i)+"|");
+                            System.out.println(i+"."+Principal.coordenadores.get(i)+"|");
                         }
                         coor= scan.nextInt();
                         Principal.contas.get(contaEscolhida).setTitular(Principal.coordenadores.get(coor));
+                        Principal.alunos.get(coor).setConta(Principal.contas.get(contaEscolhida));
                         break;
                     case 7:
                         System.out.println("Escolha o secretario Academico:");
                         for(int i=0;i<Principal.secretariosAcademicos.size();i++){
-                            System.out.print(i+"."+Principal.secretariosAcademicos.get(i)+"|");
+                            System.out.println(i+"."+Principal.secretariosAcademicos.get(i)+"|");
                         }
                         secAC= scan.nextInt();
                         Principal.contas.get(contaEscolhida).setTitular(Principal.secretariosAcademicos.get(secAC));
+                        Principal.alunos.get(secAC).setConta(Principal.contas.get(contaEscolhida));
                         break;
                     case 8:
                        System.out.println("Escolha o secretario Financeiro:");
                        for(int i=0;i<Principal.secretariosFinanceiros.size();i++){
-                            System.out.print(i+"."+Principal.secretariosFinanceiros.get(i)+"|");
+                            System.out.println(i+"."+Principal.secretariosFinanceiros.get(i)+"|");
                         }
                         secFN= scan.nextInt();
                         Principal.contas.get(contaEscolhida).setTitular(Principal.secretariosFinanceiros.get(secFN));
+                        Principal.alunos.get(secFN).setConta(Principal.contas.get(contaEscolhida));
                         break;
                     default: System.out.println("Opcao invalida!");
                 }
@@ -609,20 +618,23 @@ public class Metodos {
             {
                 System.out.println("Escolha a agencia:");
                 for(int i=0;i<Principal.agencias.size();i++){
-                    System.out.print(i+"."+Principal.agencias.get(i)+"|");
+                    System.out.println(i+"."+Principal.agencias.get(i)+"|");
                 }
                 escolha3= scan.nextInt();
                 Principal.contas.get(contaEscolhida).setAgencia(Principal.agencias.get(escolha3));
+                Principal.agencias.get(escolha3).setConta(Principal.contas.get(escolha3));
+                
                 break;
             }
             case 3:
             {
                 System.out.println("Escolha o gerente:");
                 for(int i=0;i<Principal.gerentes.size();i++){
-                    System.out.print(i+"."+Principal.gerentes.get(i)+"|");
+                    System.out.println(i+"."+Principal.gerentes.get(i)+"|");
                 }
                 escolha4= scan.nextInt();
                 Principal.contas.get(contaEscolhida).setGerente(Principal.gerentes.get(escolha4));
+                Principal.gerentes.get(escolha4).setConta(Principal.contas.get(contaEscolhida));
                 break;
             }
         }
@@ -633,7 +645,7 @@ public class Metodos {
         
         System.out.println("Escolha a agencia:");
         for(int i=0;i<Principal.agencias.size();i++){
-            System.out.print(i+"."+Principal.agencias.get(i)+"|");
+            System.out.println(i+"."+Principal.agencias.get(i)+"|");
         }
         escolha= scan.nextInt();
         Principal.bancos[0].setAgencia(Principal.agencias.get(escolha));    
@@ -651,16 +663,16 @@ public class Metodos {
         int op8,op8C,op8V;
         int esc1,escP,SA,SF,G;
         
-        System.out.println("Deseja:1.Sacar|2.Depositar|3.Atender");
+        System.out.println("Deseja: 1.Sacar|2.Depositar|3.Atender");
         escolha= scan.nextInt();
         
         switch(escolha){
             case 1:
             {
                 System.out.println("Escolha o tipo de pessoa:");
-                System.out.println("1.aluno,2.professor,3.presidente,4.diretor,"
-                                + "5.gerente,6.coordenador,7.secAcademico,"
-                                + "8.secFinanceiro");   
+                System.out.println("1.Aluno, 2.Professor, 3.Presidente, 4.Diretor,"
+                                + "5.Gerente, 6.Coordenador, 7.Secretario(a) Academico,"
+                                + "8.Secretario(a) Financeiro");   
                 escolha1=scan.nextInt();
             
             switch(escolha1){
@@ -668,12 +680,12 @@ public class Metodos {
                 {
                         System.out.println("Escolha o aluno:");
                         for(int i=0;i<Principal.alunos.size();i++){
-                            System.out.print(i+"."+Principal.alunos.get(i)+"|");
+                            System.out.println(i+"."+Principal.alunos.get(i)+"|");
                         }
                         op1= scan.nextInt();
                         System.out.println("Escolha a conta:");
-                        for(int i=0;i<Principal.professores.size();i++){
-                            System.out.print(i+"."+Principal.contas.get(i)+"|");
+                        for(int i=0;i<Principal.contas.size();i++){
+                            System.out.println(i+"."+Principal.contas.get(i)+"|");
                         }
                         op1C= scan.nextInt();
                         System.out.println("Digite o valor:");
@@ -686,12 +698,12 @@ public class Metodos {
                     {
                         System.out.println("Escolha o aluno:");
                         for(int i=0;i<Principal.professores.size();i++){
-                            System.out.print(i+"."+Principal.professores.get(i)+"|");
+                            System.out.println(i+"."+Principal.professores.get(i)+"|");
                         }
                         op2= scan.nextInt();
                         System.out.println("Escolha a conta:");
                         for(int i=0;i<Principal.contas.size();i++){
-                            System.out.print(i+"."+Principal.contas.get(i)+"|");
+                            System.out.println(i+"."+Principal.contas.get(i)+"|");
                         }
                         op2C= scan.nextInt();
                         System.out.println("Digite o valor:");
@@ -705,12 +717,12 @@ public class Metodos {
                     {
                         System.out.println("Escolha o aluno:");
                         for(int i=0;i<Principal.presidentes.size();i++){
-                            System.out.print(i+"."+Principal.presidentes.get(i)+"|");
+                            System.out.println(i+"."+Principal.presidentes.get(i)+"|");
                         }
                         op3= scan.nextInt();
                         System.out.println("Escolha a conta:");
                         for(int i=0;i<Principal.contas.size();i++){
-                            System.out.print(i+"."+Principal.contas.get(i)+"|");
+                            System.out.println(i+"."+Principal.contas.get(i)+"|");
                         }
                         op3C= scan.nextInt();
                         System.out.println("Digite o valor:");
@@ -724,12 +736,12 @@ public class Metodos {
                     {
                         System.out.println("Escolha o aluno:");
                         for(int i=0;i<Principal.diretores.size();i++){
-                            System.out.print(i+"."+Principal.diretores.get(i)+"|");
+                            System.out.println(i+"."+Principal.diretores.get(i)+"|");
                         }
                         op4= scan.nextInt();
                         System.out.println("Escolha a conta:");
                         for(int i=0;i<Principal.contas.size();i++){
-                            System.out.print(i+"."+Principal.contas.get(i)+"|");
+                            System.out.println(i+"."+Principal.contas.get(i)+"|");
                         }
                         op4C= scan.nextInt();
                         System.out.println("Digite o valor:");
@@ -743,12 +755,12 @@ public class Metodos {
                     {
                         System.out.println("Escolha o aluno:");
                         for(int i=0;i<Principal.gerentes.size();i++){
-                            System.out.print(i+"."+Principal.gerentes.get(i)+"|");
+                            System.out.println(i+"."+Principal.gerentes.get(i)+"|");
                         }
                         op5= scan.nextInt();
                         System.out.println("Escolha a conta:");
                         for(int i=0;i<Principal.contas.size();i++){
-                            System.out.print(i+"."+Principal.contas.get(i)+"|");
+                            System.out.println(i+"."+Principal.contas.get(i)+"|");
                         }
                         op5C= scan.nextInt();
                         System.out.println("Digite o valor:");
@@ -762,12 +774,12 @@ public class Metodos {
                     {
                         System.out.println("Escolha o aluno:");
                         for(int i=0;i<Principal.coordenadores.size();i++){
-                            System.out.print(i+"."+Principal.coordenadores.get(i)+"|");
+                            System.out.println(i+"."+Principal.coordenadores.get(i)+"|");
                         }
                         op6= scan.nextInt();
                         System.out.println("Escolha a conta:");
                         for(int i=0;i<Principal.contas.size();i++){
-                            System.out.print(i+"."+Principal.contas.get(i)+"|");
+                            System.out.println(i+"."+Principal.contas.get(i)+"|");
                         }
                         op6C= scan.nextInt();
                         System.out.println("Digite o valor:");
@@ -781,12 +793,12 @@ public class Metodos {
                     {
                         System.out.println("Escolha o aluno:");
                         for(int i=0;i<Principal.secretariosAcademicos.size();i++){
-                            System.out.print(i+"."+Principal.secretariosAcademicos.get(i)+"|");
+                            System.out.println(i+"."+Principal.secretariosAcademicos.get(i)+"|");
                         }
                         op7= scan.nextInt();
                         System.out.println("Escolha a conta:");
                         for(int i=0;i<Principal.contas.size();i++){
-                            System.out.print(i+"."+Principal.contas.get(i)+"|");
+                            System.out.println(i+"."+Principal.contas.get(i)+"|");
                         }
                         op7C= scan.nextInt();
                         System.out.println("Digite o valor:");
@@ -800,12 +812,12 @@ public class Metodos {
                     {
                        System.out.println("Escolha o aluno:");
                         for(int i=0;i<Principal.secretariosFinanceiros.size();i++){
-                            System.out.print(i+"."+Principal.secretariosFinanceiros.get(i)+"|");
+                            System.out.println(i+"."+Principal.secretariosFinanceiros.get(i)+"|");
                         }
                         op8= scan.nextInt();
                         System.out.println("Escolha a conta:");
                         for(int i=0;i<Principal.contas.size();i++){
-                            System.out.print(i+"."+Principal.contas.get(i)+"|");
+                            System.out.println(i+"."+Principal.contas.get(i)+"|");
                         }
                         op8C= scan.nextInt();
                         System.out.println("Digite o valor:");
@@ -815,6 +827,8 @@ public class Metodos {
                         
                         break;
                     }
+                    case 0:
+                    break;
                     default: System.out.println("Opcao invalida!");
                 }
                 break;
@@ -832,12 +846,12 @@ public class Metodos {
                 {
                         System.out.println("Escolha o aluno:");
                         for(int i=0;i<Principal.alunos.size();i++){
-                            System.out.print(i+"."+Principal.alunos.get(i)+"|");
+                            System.out.println(i+"."+Principal.alunos.get(i)+"|");
                         }
                         op1= scan.nextInt();
                         System.out.println("Escolha a conta:");
                         for(int i=0;i<Principal.contas.size();i++){
-                            System.out.print(i+"."+Principal.contas.get(i)+"|");
+                            System.out.println(i+"."+Principal.contas.get(i)+"|");
                         }
                         op1C= scan.nextInt();
                         System.out.println("Digite o valor:");
@@ -851,12 +865,12 @@ public class Metodos {
                     {
                         System.out.println("Escolha o Profesor:");
                         for(int i=0;i<Principal.professores.size();i++){
-                            System.out.print(i+"."+Principal.professores.get(i)+"|");
+                            System.out.println(i+"."+Principal.professores.get(i)+"|");
                         }
                         op2= scan.nextInt();
                         System.out.println("Escolha a conta:");
                         for(int i=0;i<Principal.contas.size();i++){
-                            System.out.print(i+"."+Principal.contas.get(i)+"|");
+                            System.out.println(i+"."+Principal.contas.get(i)+"|");
                         }
                         op2C= scan.nextInt();
                         System.out.println("Digite o valor:");
@@ -870,12 +884,12 @@ public class Metodos {
                     {
                         System.out.println("Escolha o Presidente:");
                         for(int i=0;i<Principal.presidentes.size();i++){
-                            System.out.print(i+"."+Principal.presidentes.get(i)+"|");
+                            System.out.println(i+"."+Principal.presidentes.get(i)+"|");
                         }
                         op3= scan.nextInt();
                         System.out.println("Escolha a conta:");
                         for(int i=0;i<Principal.contas.size();i++){
-                            System.out.print(i+"."+Principal.contas.get(i)+"|");
+                            System.out.println(i+"."+Principal.contas.get(i)+"|");
                         }
                         op3C= scan.nextInt();
                         System.out.println("Digite o valor:");
@@ -889,12 +903,12 @@ public class Metodos {
                     {
                         System.out.println("Escolha o Diretor:");
                         for(int i=0;i<Principal.diretores.size();i++){
-                            System.out.print(i+"."+Principal.diretores.get(i)+"|");
+                            System.out.println(i+"."+Principal.diretores.get(i)+"|");
                         }
                         op4= scan.nextInt();
                         System.out.println("Escolha a conta:");
                         for(int i=0;i<Principal.contas.size();i++){
-                            System.out.print(i+"."+Principal.contas.get(i)+"|");
+                            System.out.println(i+"."+Principal.contas.get(i)+"|");
                         }
                         op4C= scan.nextInt();
                         System.out.println("Digite o valor:");
@@ -908,12 +922,12 @@ public class Metodos {
                     {
                         System.out.println("Escolha o Gerente:");
                         for(int i=0;i<Principal.gerentes.size();i++){
-                            System.out.print(i+"."+Principal.gerentes.get(i)+"|");
+                            System.out.println(i+"."+Principal.gerentes.get(i)+"|");
                         }
                         op5= scan.nextInt();
                         System.out.println("Escolha a conta:");
                         for(int i=0;i<Principal.contas.size();i++){
-                            System.out.print(i+"."+Principal.contas.get(i)+"|");
+                            System.out.println(i+"."+Principal.contas.get(i)+"|");
                         }
                         op5C= scan.nextInt();
                         System.out.println("Digite o valor:");
@@ -927,12 +941,12 @@ public class Metodos {
                     {
                         System.out.println("Escolha o Coordenador:");
                         for(int i=0;i<Principal.coordenadores.size();i++){
-                            System.out.print(i+"."+Principal.coordenadores.get(i)+"|");
+                            System.out.println(i+"."+Principal.coordenadores.get(i)+"|");
                         }
                         op6= scan.nextInt();
                         System.out.println("Escolha a conta:");
                         for(int i=0;i<Principal.contas.size();i++){
-                            System.out.print(i+"."+Principal.contas.get(i)+"|");
+                            System.out.println(i+"."+Principal.contas.get(i)+"|");
                         }
                         op6C= scan.nextInt();
                         System.out.println("Digite o valor:");
@@ -946,12 +960,12 @@ public class Metodos {
                     {
                         System.out.println("Escolha o Secretario Acad:");
                         for(int i=0;i<Principal.secretariosAcademicos.size();i++){
-                            System.out.print(i+"."+Principal.secretariosAcademicos.get(i)+"|");
+                            System.out.println(i+"."+Principal.secretariosAcademicos.get(i)+"|");
                         }
                         op7= scan.nextInt();
                         System.out.println("Escolha a conta:");
                         for(int i=0;i<Principal.contas.size();i++){
-                            System.out.print(i+"."+Principal.contas.get(i)+"|");
+                            System.out.println(i+"."+Principal.contas.get(i)+"|");
                         }
                         op7C= scan.nextInt();
                         System.out.println("Digite o valor:");
@@ -965,12 +979,12 @@ public class Metodos {
                     {
                        System.out.println("Escolha o Secretario finan:");
                         for(int i=0;i<Principal.secretariosFinanceiros.size();i++){
-                            System.out.print(i+"."+Principal.secretariosFinanceiros.get(i)+"|");
+                            System.out.println(i+"."+Principal.secretariosFinanceiros.get(i)+"|");
                         }
                         op8= scan.nextInt();
                         System.out.println("Escolha a conta:");
                         for(int i=0;i<Principal.contas.size();i++){
-                            System.out.print(i+"."+Principal.contas.get(i)+"|");
+                            System.out.println(i+"."+Principal.contas.get(i)+"|");
                         }
                         op8C= scan.nextInt();
                         System.out.println("Digite o valor:");
@@ -994,7 +1008,7 @@ public class Metodos {
                     {
                         System.out.println("Escolha o Profesor:");
                         for(int i=0;i<Principal.professores.size();i++){
-                            System.out.print(i+"."+Principal.professores.get(i)+"|");
+                            System.out.println(i+"."+Principal.professores.get(i)+"|");
                         }
                         escP= scan.nextInt();
                         Principal.professores.get(escP).atenderAluno();
@@ -1004,7 +1018,7 @@ public class Metodos {
                     {
                         System.out.println("Escolha o Secretario Acad:");
                         for(int i=0;i<Principal.secretariosAcademicos.size();i++){
-                            System.out.print(i+"."+Principal.secretariosAcademicos.get(i)+"|");
+                            System.out.println(i+"."+Principal.secretariosAcademicos.get(i)+"|");
                         }
                         SA= scan.nextInt();
                         Principal.secretariosAcademicos.get(SA).atenderAluno();
@@ -1014,7 +1028,7 @@ public class Metodos {
                     {
                         System.out.println("Escolha o Secretario finan:");
                         for(int i=0;i<Principal.secretariosFinanceiros.size();i++){
-                            System.out.print(i+"."+Principal.secretariosFinanceiros.get(i)+"|");
+                            System.out.println(i+"."+Principal.secretariosFinanceiros.get(i)+"|");
                         }
                         SF= scan.nextInt();
                         Principal.secretariosFinanceiros.get(SF).removerFila();
@@ -1024,7 +1038,7 @@ public class Metodos {
                     {
                         System.out.println("Escolha o Gerente:");
                         for(int i=0;i<Principal.gerentes.size();i++){
-                            System.out.print(i+"."+Principal.gerentes.get(i)+"|");
+                            System.out.println(i+"."+Principal.gerentes.get(i)+"|");
                         }
                         G= scan.nextInt();
                         Principal.gerentes.get(G).atendeFila();
