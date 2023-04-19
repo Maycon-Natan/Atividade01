@@ -28,7 +28,7 @@ public class ContaCorrente implements Conta {
     @Override
     public void depositar(double valor) {
         this.saldo+= valor;
-        System.out.println("Deposito realizado com sucesso!\n" + "Valor em saldo" + this.saldo);
+        System.out.println("Deposito realizado com sucesso!\n" + "Valor em saldo " + this.saldo);
     }
 
     @Override
@@ -38,7 +38,7 @@ public class ContaCorrente implements Conta {
         }
         else
             this.saldo -= valor;
-            System.out.println("Saque realizado com sucesso!\n" + "Valor em saldo" + this.saldo);
+            System.out.println("Saque realizado com sucesso!\n" + "Valor em saldo " + this.saldo);
     }
 
     @Override

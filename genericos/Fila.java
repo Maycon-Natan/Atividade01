@@ -23,6 +23,7 @@ public class Fila<Pessoa> {
             System.out.println("A fila esta vazia");
             throw new EmptyStackException();
         }
+        System.out.println("Atendendo " + arrey.get(arrey.size()).toString());
         return arrey.remove(arrey.size()-1);
     }
     

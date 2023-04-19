@@ -33,6 +33,7 @@ public class Metodos {
         cod = Principal.scan.nextInt();
         coordenador.setCodDiretoria(cod);
         Principal.coordenadores.add(coordenador);
+        Principal.pessoas.add(coordenador);
     }
 
     public static void CriarBanco() {
@@ -48,6 +49,7 @@ public class Metodos {
         nome = Principal.scan.next();
         banco.setNome(nome);
         Principal.bancos[0] = banco;
+        Principal.pessoas.add(banco);
     }
 
     public static void CriarSecAC() {
@@ -64,6 +66,7 @@ public class Metodos {
         sac.setCodSecretaria(cod);
         
         Principal.secretariosAcademicos.add(sac);
+        Principal.pessoas.add(sac);
         System.out.println("Deseja adicionar alunos a fila de atendimento: 1- Sim  2- Nao");
         op = scan.nextInt();
         if(op==1){
@@ -93,18 +96,11 @@ public class Metodos {
         secFinanceira.setRg(rg);
         cod = Principal.scan.nextInt();
         secFinanceira.setCodSecretaria(cod);
-
-        Principal.pessoasFisicas.addAll(Principal.alunos);
-        Principal.pessoasFisicas.addAll(Principal.professores);
-        Principal.pessoasFisicas.addAll(Principal.presidentes);
-        Principal.pessoasFisicas.addAll(Principal.diretores);
-        Principal.pessoasFisicas.addAll(Principal.coordenadores);
-        Principal.pessoasFisicas.addAll(Principal.gerentes);
-        Principal.pessoasFisicas.addAll(Principal.secretariosAcademicos);
-        Principal.pessoasFisicas.addAll(Principal.secretariosFinanceiros);
-       
         Principal.secretariosFinanceiros.add(secFinanceira);
-        System.out.println("Deseja adicionar alguem a fila de atendimento: 1- Sim  2- Não");
+        Principal.pessoas.add(secFinanceira);
+
+
+        System.out.println("Deseja adicionar alguem a fila de atendimento: 1- Sim  2- Nao");
         op= scan.nextInt();
         if(op==1){
             System.out.println("Quantos:");
@@ -133,6 +129,7 @@ public class Metodos {
         disc.setSala(sala);
         
         Principal.disciplinas.add(disc);
+       
     }
 
     public static void CriarPresidente() {
@@ -148,6 +145,7 @@ public class Metodos {
         cod = Principal.scan.nextInt();
         pr.setCodDiretoria(cod);
         Principal.presidentes.add(pr);
+        Principal.pessoas.add(pr);
     }
 
     public static void CriarAluno() {
@@ -163,6 +161,7 @@ public class Metodos {
         matricula = Principal.scan.next();
         aluno.setMatricula(matricula);
         Principal.alunos.add(aluno);
+        Principal.pessoas.add(aluno);
     }
 
     public static void CriarGerente() {
@@ -176,9 +175,11 @@ public class Metodos {
         rg = Principal.scan.next();
         gerente.setRg(rg);
 
-        
         Principal.gerentes.add(gerente);
-        System.out.println("Deseja adicionar alguem a fila de atendimento: 1- Sim  2- Não ");
+        Principal.pessoas.add(gerente);
+
+
+        System.out.println("Deseja adicionar alguem a fila de atendimento: 1- Sim  2- Nao ");
         op= scan.nextInt();
         if(op==1){
             System.out.println("Quantos:");
@@ -186,7 +187,7 @@ public class Metodos {
             for(int i=0;i<op1;i++){
                 System.out.println("Escolha a pessoa:");
                 for(int j=0; j<Principal.pessoas.size();j++){
-                    System.out.println(j+".("+Principal.pessoas.get(i).getNome()+")|");
+                    System.out.println(j+".("+Principal.pessoas.get(i)+")|");
                 }
                 op2=scan.nextInt();
                 gerente.addFila(Principal.pessoas.get(op2));
@@ -199,21 +200,13 @@ public class Metodos {
     public static void CriarConta() {
         String cod;
         double saldo;
-        int op1,escolha;
+        int op1;
         System.out.println("Escolha o tipo de conta: \n1- Conta Corrente 2- Conta Poupanca ");
         op1 = scan.nextInt();
         System.out.println("Digite os dados da Conta na ordem:SALDO,CODIGO CONTA");
         saldo = Principal.scan.nextDouble();
         cod = Principal.scan.next();
-        // System.out.println("Adicione um gerente:");
-        // if(Principal.gerentes.isEmpty()) {
-        //     System.out.println("Nenhum gerente criado");
-        // } else {
-        //     for (int op3 = 0; op3 < Principal.gerentes.size(); op3++) {
-           
-        //         System.out.println(op3 + ".("+Principal.gerentes.get(op3).getNome()+")|");
-        //     } 
-        //     escolha = Principal.scan.nextInt();
+
             System.out.println("O titular foi definido como padrao, associe um titular apos a criacao!");
             if (op1 == 1) {
                 ContaCorrente conta = new ContaCorrente(cod,  saldo);
@@ -221,10 +214,7 @@ public class Metodos {
             } else if (op1 == 2) {
                 ContaPoupanca conta = new ContaPoupanca(cod, saldo);
                 Principal.contas.add(conta);
-                System.out.println( Principal.contas.get(0));
             }
-
-        // }
         
         
         
@@ -245,13 +235,14 @@ public class Metodos {
     public static void CriarSecFinanceira() {
         String nome;
         String rg;
-        int cod,op,op1,op2, k=0;
+        int cod,op,op1,op2;
         System.out.println("Digite as informacoes do Coordenador na ordem:NOME,RG,CODIGO SECRETARIA ");
         nome = Principal.scan.next();
         rg = Principal.scan.next();
         cod = Principal.scan.nextInt();
         SecFinanceira secFinanceira = new SecFinanceira(rg, nome, cod);
         Principal.secretariosFinanceiros.add(secFinanceira);
+        Principal.pessoas.add(secFinanceira);
         System.out.println("Deseja adicionar alguem a fila de atendimento: 1- Sim  2- Não");
         op= scan.nextInt();
         if(op==1){
@@ -282,6 +273,7 @@ public class Metodos {
         diretor.setCodDiretoria(cod);
        
         Principal.diretores.add(diretor);
+        Principal.pessoas.add(diretor);
     }
 
     public static void CriarCurso() {
@@ -312,6 +304,7 @@ public class Metodos {
         matricula = Principal.scan.next();
         professor.setMatricula(matricula);
         Principal.professores.add(professor);
+        Principal.pessoas.add(professor);
         System.out.println("Deseja colocar algum aluno na fila de atendimento? 1- Sim   2- Nao");
         op = scan.nextInt();
         if(op==1){
@@ -342,6 +335,8 @@ public class Metodos {
         faculdade.setNome(nome);
         
         Principal.faculdades[0] = faculdade;
+        Principal.pessoas.add(faculdade);
+    
     }
     
     public static void AssociarFaculdade() {
@@ -958,7 +953,7 @@ public class Metodos {
                     }
                     case 7:
                     {
-                        System.out.println("Escolha o Secretario Acad:");
+                        System.out.println("Escolha o Secretario(a) Academico:");
                         for(int i=0;i<Principal.secretariosAcademicos.size();i++){
                             System.out.println(i+"."+Principal.secretariosAcademicos.get(i)+"|");
                         }
@@ -977,7 +972,7 @@ public class Metodos {
                     }
                     case 8:
                     {
-                       System.out.println("Escolha o Secretario finan:");
+                       System.out.println("Escolha o Secretario(a) financeiro:");
                         for(int i=0;i<Principal.secretariosFinanceiros.size();i++){
                             System.out.println(i+"."+Principal.secretariosFinanceiros.get(i)+"|");
                         }
@@ -1000,8 +995,8 @@ public class Metodos {
             }
             case 3:
             {
-                System.out.println("De quem sera atendido:\n");
-                System.out.println("1.Professor|2.Secretario AC|3.Secretario FN|4. Gerente");
+                System.out.println("Escolha a fila que irá atender:\n");
+                System.out.println("1.Professor | 2.Secretario AC | 3.Secretario FN | 4. Gerente");
                 esc1= scan.nextInt();
                 switch(esc1){
                     case 1:
@@ -1016,7 +1011,7 @@ public class Metodos {
                     }
                     case 2:
                     {
-                        System.out.println("Escolha o Secretario Acad:");
+                        System.out.println("Escolha o Secretario(a) Academico:");
                         for(int i=0;i<Principal.secretariosAcademicos.size();i++){
                             System.out.println(i+"."+Principal.secretariosAcademicos.get(i)+"|");
                         }
@@ -1026,7 +1021,7 @@ public class Metodos {
                     }
                     case 3:
                     {
-                        System.out.println("Escolha o Secretario finan:");
+                        System.out.println("Escolha o Secretario(a) Financeiro:");
                         for(int i=0;i<Principal.secretariosFinanceiros.size();i++){
                             System.out.println(i+"."+Principal.secretariosFinanceiros.get(i)+"|");
                         }
@@ -1038,10 +1033,10 @@ public class Metodos {
                     {
                         System.out.println("Escolha o Gerente:");
                         for(int i=0;i<Principal.gerentes.size();i++){
-                            System.out.println(i+"."+Principal.gerentes.get(i)+"|");
+                            System.out.println(i+"."+Principal.gerentes.get(i)+" | ");
                         }
-                        G= scan.nextInt();
-                        Principal.gerentes.get(G).atendeFila();
+                        G = scan.nextInt();
+                        Principal.gerentes.get(G).atenderFila();
                         break;
                     }
                 }
@@ -1049,5 +1044,33 @@ public class Metodos {
             }
         }     
     }
+
+
+    public static void AtualizaPessoaFisica(){
+        Principal.pessoasFisicas.addAll(Principal.alunos);
+        Principal.pessoasFisicas.addAll(Principal.professores);
+        Principal.pessoasFisicas.addAll(Principal.presidentes);
+        Principal.pessoasFisicas.addAll(Principal.diretores);
+        Principal.pessoasFisicas.addAll(Principal.coordenadores);
+        Principal.pessoasFisicas.addAll(Principal.gerentes);
+        Principal.pessoasFisicas.addAll(Principal.secretariosAcademicos);
+        Principal.pessoasFisicas.addAll(Principal.secretariosFinanceiros);
+        System.out.println("Atualizado Pessoa fisica");
+    }
+    
+    public static void AtualizaPessoas(){
+        Principal.pessoas.addAll(Principal.alunos);
+        Principal.pessoas.addAll(Principal.professores);
+        Principal.pessoas.addAll(Principal.presidentes);
+        Principal.pessoas.addAll(Principal.diretores);
+        Principal.pessoas.addAll(Principal.coordenadores);
+        Principal.pessoas.addAll(Principal.gerentes);
+        Principal.pessoas.addAll(Principal.secretariosAcademicos);
+        Principal.pessoas.addAll(Principal.secretariosFinanceiros);
+        Principal.pessoas.add(Principal.bancos[0]);
+        Principal.pessoas.add(Principal.faculdades[0]);
+       
+        System.out.println("Atualizado Pessoas");
+        }
 }
 

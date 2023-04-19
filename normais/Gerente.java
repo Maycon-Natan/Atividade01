@@ -22,7 +22,7 @@ public class Gerente extends Funcionario{
     public void addFila(Pessoa p){
         fila.enfileirar(p);
     }
-    public void atendeFila(){
+    public void atenderFila(){
         fila.encerrarAtendimento();
     }
 

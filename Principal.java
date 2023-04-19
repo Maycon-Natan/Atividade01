@@ -1,8 +1,10 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import abstracts.Empresa;
 import abstracts.Pessoa;
 import genericos.Autores;
+import genericos.Aviso;
 import interfaces.Conta;
 import interfaces.PessoaFisica;
 import interfaces.PessoaJuridica;
@@ -20,14 +22,13 @@ import normais.Presidente;
 import normais.Professor;
 import normais.Gerente;
 
-@Autores(Nome = "Maycon Natan, Jalbert Ramon, João Vitor",
-Matricula = "201903268036")
+@Autores(Nome = "Maycon Natan, Jalbert Ramon, João Victor Barbosa",
+Matricula = "201903268036, 201903263328, 201901322637")
 
 public class Principal {
     static Scanner scan = new Scanner(System.in);
 
     static ArrayList<PessoaFisica> pessoasFisicas = new ArrayList();
-    static ArrayList<PessoaJuridica> pessoasJuridicas = new ArrayList();
     static ArrayList<Pessoa> pessoas = new ArrayList();
     static ArrayList<Coordenador> coordenadores = new ArrayList();
     static ArrayList<Aluno> alunos = new ArrayList();
@@ -45,54 +46,17 @@ public class Principal {
     static ArrayList<Curso> cursos = new ArrayList();
     static Faculdade[] faculdades = new Faculdade[1];
 
-
+    @Aviso(aviso = "Instancie todos os objetos antes de qualquer associação ou manipulação")
 
     public static void main(String[] args) throws Exception {
         String[] tiposPessoas = {"Aluno","Professor","Presidente","Diretor","Coordenador",
                             "SecAcademico","secFinanceiro","Gerente"};
         int opI,opF,opP,opB,opA,x;
 
-        Aluno aluno = new Aluno("AlunoDefault", "Default", "Default");
-        Professor professor = new Professor("ProfessorDefault", "Default", "Default");
-        Presidente presidente = new Presidente("PresidenteDefault", "Default", 123);
-        Diretor diretor = new Diretor("DiretorDefault", "DiretorDefault", 123);
-        Coordenador coordenador = new Coordenador("CoordenadorDefault", "Default", 123);
-        Gerente gerente = new Gerente("GerenteDefault", "Default");
-        SecAcademica secAcademica = new SecAcademica("SecAcadDefault", "Default", 123);
-        SecFinanceira secFinanceira = new SecFinanceira("SeDefault", "Default", 123);
 
-            Principal.alunos.add(0,aluno);
-            Principal.professores.add(0,professor);
-            Principal.presidentes.add(0,presidente);
-            Principal.diretores.add(0,diretor);
-            Principal.coordenadores.add(0,coordenador);
-            Principal.gerentes.add(0,gerente);
-            Principal.secretariosAcademicos.add(0,secAcademica);
-            Principal.secretariosFinanceiros.add(0,secFinanceira);
-
-        //     System.out.println(Principal.alunos.get(0).getNome());
-        //     System.out.println(Principal.coordenadores.get(0).getNome());
        
-
-        pessoasFisicas.addAll(alunos);
-        pessoasFisicas.addAll(professores);
-        pessoasFisicas.addAll(presidentes);
-        pessoasFisicas.addAll(diretores);
-        pessoasFisicas.addAll(coordenadores);
-        pessoasFisicas.addAll(gerentes);
-        pessoasFisicas.addAll(secretariosAcademicos);
-        pessoasFisicas.addAll(secretariosFinanceiros);
-
         do{
-            Principal.alunos.add(0,aluno);
-            Principal.professores.add(0,professor);
-            Principal.presidentes.add(0,presidente);
-            Principal.diretores.add(0,diretor);
-            Principal.coordenadores.add(0,coordenador);
-            Principal.gerentes.add(0,gerente);
-            Principal.secretariosAcademicos.add(0,secAcademica);
-            Principal.secretariosFinanceiros.add(0,secFinanceira);
-            
+
             MenuCriacao();
             System.out.println("Escolha uma opcao:(0 para sair)");
             opI= scan.nextInt();
@@ -166,13 +130,11 @@ public class Principal {
                         
                         }
                     }
-                    AtualizaPessoaFisica();
-                    AtualizaPessoas();
                     break;
                 }
                 case 2:
                 {
-                    System.out.print("Escolha um dos:1.Faculdade|2.Curso|3.Disciplina ");
+                    System.out.print("Escolha um dos: 1.Faculdade | 2.Curso | 3.Disciplina ");
                     opF= scan.nextInt();
                     
                     switch(opF){
@@ -302,24 +264,5 @@ public class Principal {
                                """);
         }
 
-        public static void AtualizaPessoaFisica(){
-            pessoasFisicas.addAll(alunos);
-            pessoasFisicas.addAll(professores);
-            pessoasFisicas.addAll(presidentes);
-            pessoasFisicas.addAll(diretores);
-            pessoasFisicas.addAll(coordenadores);
-            pessoasFisicas.addAll(gerentes);
-            pessoasFisicas.addAll(secretariosAcademicos);
-            pessoasFisicas.addAll(secretariosFinanceiros);
-            }
-            public static void AtualizaPessoas(){
-            pessoas.addAll(alunos);
-            pessoas.addAll(professores);
-            pessoas.addAll(presidentes);
-            pessoas.addAll(diretores);
-            pessoas.addAll(coordenadores);
-            pessoas.addAll(gerentes);
-            pessoas.addAll(secretariosAcademicos);
-            pessoas.addAll(secretariosFinanceiros);
-            }
+        
 }

@@ -5,7 +5,8 @@ import java.util.ArrayList;
 import abstracts.Empresa;
 import interfaces.Conta;
 
-public class Banco extends Empresa {
+
+public class Banco extends Empresa{
     private Agencia agencia;
 
     public Banco(String cnpj, String nomeEmpresa, String nome) {
