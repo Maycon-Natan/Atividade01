@@ -1,7 +1,6 @@
 package genericos;
 
 import java.util.ArrayList;
-import java.util.EmptyStackException;
 
 public class Fila<Pessoa> {
     private final ArrayList<Pessoa> arrey;
@@ -21,9 +20,9 @@ public class Fila<Pessoa> {
     public Pessoa encerrarAtendimento(){
         if(arrey.isEmpty()){
             System.out.println("A fila esta vazia");
-            throw new EmptyStackException();
+            return null;
         }
-        System.out.println("Atendendo " + arrey.get(arrey.size()).toString());
+
         return arrey.remove(arrey.size()-1);
     }
     
