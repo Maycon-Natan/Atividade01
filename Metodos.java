@@ -98,6 +98,7 @@ public class Metodos {
         secFinanceira.setCodSecretaria(cod);
         Principal.secretariosFinanceiros.add(secFinanceira);
         Principal.pessoas.add(secFinanceira);
+        Principal.pessoasFisicas.add(secFinanceira);
 
 
         System.out.println("Deseja adicionar alguem a fila de atendimento: 1- Sim  2- Nao");
@@ -385,14 +386,14 @@ public class Metodos {
                 System.out.println("Digite o tipo de secretario: 1. Academico ou 2. Financeiro");
                 x = Principal.scan.nextInt();
                 if (x == 1) {
-                    System.out.println("Escolha o secAcademico:");
+                    System.out.println("Escolha o Secretario(a) Academico:");
                     for (int i = 0; i < Principal.secretariosAcademicos.size(); i++) {
                         System.out.println(i + "." + Principal.secretariosAcademicos.get(i).getNome() + "|");
                     }
                     escolhaSA = Principal.scan.nextInt();
                     Principal.faculdades[0].setSecretariosAcademicos(Principal.secretariosAcademicos.get(escolhaSA));
                 } else {
-                    System.out.println("escolha o secFinanceiro:");
+                    System.out.println("Escolha o Secretario(a) Financeiro:");
                     for (int i = 0; i < Principal.secretariosFinanceiros.size(); i++) {
                         System.out.println(i + "." + Principal.secretariosFinanceiros.get(i).getNome() + "|");
                     }
@@ -831,9 +832,9 @@ public class Metodos {
             case 2:
             {
                 System.out.println("Escolha o tipo de pessoa:");
-                System.out.println("1.aluno,2.professor,3.presidente,4.diretor,"
-                            + "5.gerente,6.coordenador,7.secAcademico,"
-                            + "8.secFinanceiro");   
+                System.out.println("1.Aluno, 2.Professor, 3.Presidente, 4.Diretor,"
+                            + "5.Gerente, 6.Coordenador, 7.Secretario(a) Academico,"
+                            + "8.Secretario(a) Financeiro");   
             escolha1=scan.nextInt();
             
             switch(escolha1){
@@ -996,7 +997,7 @@ public class Metodos {
             case 3:
             {
                 System.out.println("Escolha a fila que irá atender:\n");
-                System.out.println("1.Professor | 2.Secretario AC | 3.Secretario FN | 4. Gerente");
+                System.out.println("1.Professor | 2.Secretario(a) Academico | 3.Secretario Financeiro | 4. Gerente");
                 esc1= scan.nextInt();
                 switch(esc1){
                     case 1:

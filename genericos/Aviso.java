@@ -1,5 +1,5 @@
 package genericos;
 
 public @interface Aviso {
-    String aviso();
+    String Aviso();
 }

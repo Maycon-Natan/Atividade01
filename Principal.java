@@ -25,6 +25,9 @@ import normais.Gerente;
 @Autores(Nome = "Maycon Natan, Jalbert Ramon, João Victor Barbosa",
 Matricula = "201903268036, 201903263328, 201901322637")
 
+
+       
+
 public class Principal {
     static Scanner scan = new Scanner(System.in);
 
@@ -46,15 +49,14 @@ public class Principal {
     static ArrayList<Curso> cursos = new ArrayList();
     static Faculdade[] faculdades = new Faculdade[1];
 
-    @Aviso(aviso = "Instancie todos os objetos antes de qualquer associação ou manipulação")
-
+    
+    @Aviso(Aviso = "Instancie todos os objetos antes de qualquer associação ou manipulação")
     public static void main(String[] args) throws Exception {
         String[] tiposPessoas = {"Aluno","Professor","Presidente","Diretor","Coordenador",
-                            "SecAcademico","secFinanceiro","Gerente"};
+                            "Secretario(a) Academico","Secretario(a) Financeiro","Gerente"};
         int opI,opF,opP,opB,opA,x;
 
-
-       
+        
         do{
 
             MenuCriacao();
